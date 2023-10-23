@@ -1,0 +1,16 @@
+{
+  "id": "mig_ckra93d1635ke9ta42jg",
+  "parentID": "mig_ckra4ft1635ke9ta40qg",
+  "checksum": "1:85b2727f092933b25538b02b6849954461d9fcad5aa2aa1968842ddbff1ea46c",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "profile_image",
+          "type": "file"
+        },
+        "table": "Users"
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Kythonlk-s-workspace-jbmhqc.eu-west-1.xata.sh/db/xata-astro",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}

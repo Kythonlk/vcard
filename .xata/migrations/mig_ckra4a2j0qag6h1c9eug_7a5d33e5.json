@@ -1,0 +1,17 @@
+{
+  "id": "mig_ckra4a2j0qag6h1c9eug",
+  "parentID": "mig_ckra46tvpvmbcfqgr3f0",
+  "checksum": "1:7a5d33e5638731bd1e2efbe4835b34fdba732ce3cd4d10d4bbce79bc95fa9755",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "bio",
+          "type": "text",
+          "defaultValue": "ewrtgersgyser"
+        },
+        "table": "Users"
+      }
+    }
+  ]
+}

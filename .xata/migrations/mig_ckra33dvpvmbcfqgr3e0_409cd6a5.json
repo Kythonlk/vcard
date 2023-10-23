@@ -1,0 +1,16 @@
+{
+  "id": "mig_ckra33dvpvmbcfqgr3e0",
+  "parentID": "mig_ckra2tdvpvmbcfqgr3d0",
+  "checksum": "1:409cd6a5572099e70aa70201f511dbc55c50f1ce32ab6d3689a5b774b19fbcf1",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "bio",
+          "type": "text"
+        },
+        "table": "Users"
+      }
+    }
+  ]
+}

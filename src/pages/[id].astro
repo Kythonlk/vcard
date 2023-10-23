@@ -1,0 +1,45 @@
+---
+import MainLayout from '../layouts/main.astro'
+ 
+ import { XataClient } from '../xata';
+  
+ export async function getStaticPaths() {
+   const xata = new XataClient({
+     apiKey: import.meta.env.XATA_API_KEY,
+     branch: import.meta.env.XATA_BRANCH
+   });
+   const users = await xata.db.Users.getAll();
+  
+   const routes = users.map(({ id, name, email, bio,profile_image }) => {
+     return {
+       params: { id },
+       props: { name, email, bio, profile_image },
+     };
+   });
+  
+   return routes;
+ }
+  
+ const User = Astro.props;
+ ---
+  
+ <MainLayout title={User.id}>
+  
+   <div class="w-full max-w-5xl mt-16">
+     <p class="mb-2">
+       <a href="/" class="text-purple-600">
+         &larr; Back to Home
+       </a>
+     </p>
+  
+     <h1 class="text-3xl mb-2">{User?.name}</h1>
+     <p class="text-sm mb-4 text-purple-950 dark:text-purple-200">
+       {User?.email}
+     </p>
+ 
+     <p class="text-xl">{User?.bio}</p>
+  
+   </div>
+  
+ </MainLayout>
+  

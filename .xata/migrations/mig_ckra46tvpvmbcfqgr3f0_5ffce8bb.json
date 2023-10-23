@@ -1,0 +1,16 @@
+{
+  "id": "mig_ckra46tvpvmbcfqgr3f0",
+  "parentID": "mig_ckra40t1635ke9ta40pg",
+  "checksum": "1:5ffce8bba66c2ed8e477b36964b03129e8b0ba0781bf16657f041db1d9f7e9b0",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "name",
+          "type": "string"
+        },
+        "table": "Users"
+      }
+    }
+  ]
+}

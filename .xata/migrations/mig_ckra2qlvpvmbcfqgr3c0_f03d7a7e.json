@@ -1,0 +1,18 @@
+{
+  "id": "mig_ckra2qlvpvmbcfqgr3c0",
+  "parentID": "mig_ckra2kl1635ke9ta40n0",
+  "checksum": "1:f03d7a7e4937b176c2b1c8db340d2656c686d6b19cfb31451cf9960463b5cbfa",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "mobile",
+          "type": "int",
+          "notNull": true,
+          "defaultValue": "4578645896"
+        },
+        "table": "Users"
+      }
+    }
+  ]
+}
