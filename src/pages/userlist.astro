@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Profile.astro';
+import { XataClient } from '../xata';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+ 
+const xata = new XataClient({
+  apiKey: import.meta.env.XATA_API_KEY,
+  branch: import.meta.env.XATA_BRANCH
+});
+ 
+const search = Astro.url.searchParams.get('q')! || '';
+ 
+let users = null;
+if (search) {
+  users = await xata.db.Users.search(search, { fuzziness: 2 });
+} else {
+  users = await xata.db.Users.getAll();
+}
+---
+ <Header />
+<Layout title="Create your vcard now">
+
+	<div class="w-full max-w-5xl mt-16">
+		<form action="/userlist/">
+			<input
+			name="q"
+			value={search}
+			placeholder="Search..."
+			class="w-full rounded-lg border-2 p-2 dark:text-purple-950"
+			/>
+		</form>
+	</div>
+
+  <div class="w-full max-w-5xl mt-16">
+    {users.length === 0 && <p>No Users found</p>}
+    {users.map((users) => (
+      <div class="mb-2 p-4 border rounded border-black">
+        <p class="mb-2 text-sky-800">
+          {users.id}
+        </p>
+        <h2 class="text-2xl mb-2">
+          <a href={`/${users.id}`}>{users.name}</a>
+        </h2>
+        <p class="text-dark mb-2">
+          {users.email}
+        </p>
+        <a
+          href={`/${users.id}`}
+          class="px-4 py-2 font-semibold text-sm bg-purple-700 text-white rounded-lg shadow-sm w-fit"
+        >
+          Go to Profile &rarr;
+        </a>
+      </div>
+    ))}
+  </div>
+
+</Layout>
+
+<Footer />

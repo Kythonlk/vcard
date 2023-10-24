@@ -1,0 +1,16 @@
+{
+  "id": "mig_ckrnumb543u8g28hi120",
+  "parentID": "mig_ckrnuj3543u8g28hi10g",
+  "checksum": "1:db8cf00101a8e353a65aa470e8393988055ac9bc1839dcc222e5656e110a08f9",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "birthday",
+          "type": "datetime"
+        },
+        "table": "Users"
+      }
+    }
+  ]
+}

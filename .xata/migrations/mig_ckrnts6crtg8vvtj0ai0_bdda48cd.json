@@ -1,0 +1,16 @@
+{
+  "id": "mig_ckrnts6crtg8vvtj0ai0",
+  "parentID": "mig_ckrntpmcrtg8vvtj0ag0",
+  "checksum": "1:bdda48cdc612edc7188173a6cbe6c4ab9c70676809fd86a4141aeacf74b2d50c",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "job",
+          "type": "string"
+        },
+        "table": "Users"
+      }
+    }
+  ]
+}

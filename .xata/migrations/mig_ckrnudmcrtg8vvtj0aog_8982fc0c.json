@@ -1,0 +1,16 @@
+{
+  "id": "mig_ckrnudmcrtg8vvtj0aog",
+  "parentID": "mig_ckrnts6crtg8vvtj0ai0",
+  "checksum": "1:8982fc0cf7f0205f52c00830ed7ef79c3eb5dfb04724eee67688cabc29fc453d",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "whatsapp",
+          "type": "string"
+        },
+        "table": "Users"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Profile.astro';
+import UserFrom from '../components/usercreate'
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+---
+<Header />
+<Layout title="Create your vcard now">
+
+  <UserFrom client:load />
+
+</Layout>
+<Footer />
