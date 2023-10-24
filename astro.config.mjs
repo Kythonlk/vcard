@@ -4,12 +4,14 @@ import sitemap from '@astrojs/sitemap';
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 
-import vercel from "@astrojs/vercel/serverless";
+import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://example.com',
   integrations: [mdx(), sitemap(), react(), tailwind()],
-  output: 'hybrid',
-  adapter: vercel()
+  output: 'server',
+  adapter: netlify({
+    edgeMiddleware: true
+  }),
 });
