@@ -13,3 +13,19 @@ export const POST: APIRoute = async ({request}) => {
         },
     });
 }
+
+export const GET: APIRoute = async ({ request }) => {
+    const userData = await client.db.Users.getAll();
+
+    return new Response(JSON.stringify(userData), {
+        status: 200,
+        headers: {
+            "Content-Type": "application/json"
+        },
+    });
+}
+
+
+
+
+
