@@ -10,10 +10,10 @@ import Layout from '../layouts/Profile.astro';
    });
    const users = await xata.db.Users.getAll();
 
-   const routes = users.map(({ id, name, email, mobile, birthday, whatsapp, bio }) => {
+   const routes = users.map(({ id, name, email, mobile, birthday, whatsapp, bio, job }) => {
      return {
        params: { id },
-       props: { name, email, bio, mobile, birthday, whatsapp },
+       props: { name, email, bio, mobile, birthday, whatsapp ,job },
      };
    });
   
