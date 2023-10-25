@@ -10,7 +10,7 @@ import netlify from "@astrojs/netlify/functions";
 export default defineConfig({
   site: 'https://example.com',
   integrations: [mdx(), sitemap(), react(), tailwind()],
-  output: 'hybrid',
+  output: 'server',
   adapter: netlify({
     edgeMiddleware: true
   }),

@@ -6,8 +6,6 @@ const client = new XataClient({
     branch: import.meta.env.XATA_BRANCH,
 });
 
-
-
 export const POST: APIRoute = async ({request}) => {
     const user = await request.json();
     const createUser = await client.db.Users.create(user);
