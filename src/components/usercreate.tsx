@@ -18,7 +18,7 @@ const CreateUser: React.FC = () => {
   
   const onSubmit: SubmitHandler<UserData> = async (data) => {
     try {
-      const response = await axios.post('/api/users', data);
+      const response = await axios.post('/api/create-users', data);
       console.log(response.data);
     } catch (error) {
       console.error('Error creating user:', error);
