@@ -8,7 +8,7 @@ import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://vcardgen.netlify.app',
   integrations: [mdx(), sitemap(), react(), tailwind()],
   output: 'server',
   adapter: netlify({

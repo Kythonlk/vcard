@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm, type SubmitHandler, Controller } from 'react-hook-form';
 import axios from 'axios';
 
+
 interface UserData {
   id: string;
   name: string;
@@ -15,7 +16,7 @@ interface UserData {
 
 const CreateUser: React.FC = () => {
   const { control, handleSubmit } = useForm<UserData>();
-  
+
   const onSubmit: SubmitHandler<UserData> = async (data) => {
     try {
       const response = await axios.post('/api/create-users', data);
@@ -27,8 +28,8 @@ const CreateUser: React.FC = () => {
 
   return (
     <div>
-      <div className="w-full max-w-5xl mt-16 bg-sky-900 p-4">
-        <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-5xl mt-16 bg-sky-900 p-4">
           <div className="grid grid-cols-2 gap-4">
             <Controller
               name="id"
@@ -54,7 +55,76 @@ const CreateUser: React.FC = () => {
                 />
               )}
             />
+          
+
+          <Controller
+            name="email"
+            control={control}
+            render={({ field }) => (
+              <input
+                type="email"
+                placeholder="Email"
+                {...field}
+                className="p-2 border rounded"
+              />
+            )}
+          />
+
+          <Controller
+            name="mobile"
+            control={control}
+            render={({ field }) => (
+              <input
+                type="number"
+                placeholder="Mobile"
+                {...field}
+                className="p-2 border rounded"
+              />
+            )}
+          />
+
+          <Controller
+            name="birthday"
+            control={control}
+            render={({ field }) => (
+              <input
+                type="date"
+                {...field}
+                className="p-2 border rounded"
+                placeholder="birthday"
+                // value={field.value.toISOString().split('T')[0]}
+              />
+            )}
+          />
+
+          <Controller
+            name="job"
+            control={control}
+            render={({ field }) => (
+              <input
+                type="text"
+                placeholder="Job"
+                {...field}
+                className="p-2 border rounded"
+              />
+            )}
+          />
+
+          <Controller
+            name="whatsapp"
+            control={control}
+            render={({ field }) => (
+              <input
+                type="text"
+                placeholder="WhatsApp"
+                {...field}
+                className="p-2 border rounded"
+              />
+            )}
+          />
+
           </div>
+
           <Controller
             name="bio"
             control={control}
@@ -67,7 +137,6 @@ const CreateUser: React.FC = () => {
               />
             )}
           />
-          {/* Add more Controller components for other form fields as needed */}
           <button type="submit" className="mt-4 bg-blue-500 text-white p-2 rounded hover-bg-blue-700">
             Create User
           </button>
@@ -78,3 +147,4 @@ const CreateUser: React.FC = () => {
 };
 
 export default CreateUser;
+
