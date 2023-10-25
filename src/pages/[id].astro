@@ -1,55 +1,53 @@
 ---
-import Layout from '../layouts/Profile.astro';
- 
- import { XataClient } from '../xata';
-  
- export async function getStaticPaths() {
-   const xata = new XataClient({
-     apiKey: import.meta.env.XATA_API_KEY,
-     branch: import.meta.env.XATA_BRANCH
-   });
-   const users = await xata.db.Users.getAll();
+import Layout from "../layouts/Profile.astro";
+import { XataClient } from "../xata";
 
-   const routes = users.map(({ id, name, email, mobile, birthday, whatsapp, bio, job }) => {
-     return {
-       params: { id },
-       props: { name, email, bio, mobile, birthday, whatsapp ,job },
-     };
-   });
-  
-   return routes;
- }
+export const prerender = true;
 
- function formatDate(dateString: string | null | undefined): string {
+export async function getStaticPaths() {
+  const xata = new XataClient({
+    apiKey: import.meta.env.XATA_API_KEY,
+    branch: import.meta.env.XATA_BRANCH,
+  });
+  const users = await xata.db.Users.getAll();
+
+  const routes = users.map(
+    ({ id, name, email, mobile, birthday, whatsapp, bio, job }) => {
+      return {
+        params: { id },
+        props: { name, email, bio, mobile, birthday, whatsapp, job },
+      };
+    }
+  );
+
+  return routes;
+}
+
+function formatDate(dateString: string | null | undefined): string {
   if (!dateString) {
-    return '';
+    return "";
   }
 
-  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
   const date = new Date(dateString);
   return date.toLocaleDateString(undefined, options);
 }
 
+const User = Astro.props;
+---
 
- const User = Astro.props;
- ---
-  
-
- 
-<Layout
-	title={User.id}
-	description={User.bio}
->
-  
-   <div class="w-full max-w-5xl mt-16">
-     <h1 class="text-3xl mb-2">{User?.name}</h1>
-     <h1 class="text-3xl mb-2">{User?.job}</h1>
-     <h4 class="text-2xl mb-4">{User?.email}</h4>
-     <h4 class="text-2xl mb-4">{User?.mobile}</h4>
-     <h4 class="text-2xl mb-4">{User?.whatsapp}</h4>
-     <p class="text-xl">{User?.bio}</p>
-     <p class="text-xl">{User?.birthday ? formatDate(User?.birthday) : ''}</p>
-   </div>
-  
- </Layout>
-  
+<Layout title={User.id} description={User.bio}>
+  <div class="w-full max-w-5xl mt-16">
+    <h1 class="text-3xl mb-2">{User?.name}</h1>
+    <h1 class="text-3xl mb-2">{User?.job}</h1>
+    <h4 class="text-2xl mb-4">{User?.email}</h4>
+    <h4 class="text-2xl mb-4">{User?.mobile}</h4>
+    <h4 class="text-2xl mb-4">{User?.whatsapp}</h4>
+    <p class="text-xl">{User?.bio}</p>
+    <p class="text-xl">{User?.birthday ? formatDate(User?.birthday) : ""}</p>
+  </div>
+</Layout>
