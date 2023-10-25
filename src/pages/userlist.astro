@@ -13,7 +13,7 @@ const search = Astro.url.searchParams.get('q')! || '';
  
 let users = null;
 if (search) {
-  users = await xata.db.Users.search(search, { fuzziness: 2 });
+  users = await xata.db.Users.search(search, { fuzziness: 3 });
 } else {
   users = await xata.db.Users.getAll();
 }
